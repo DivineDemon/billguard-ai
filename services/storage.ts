@@ -1,6 +1,6 @@
-import { BillRecord } from '../types';
+import type { BillRecord } from "../types";
 
-const STORAGE_KEY = 'billguard_db_v1';
+const STORAGE_KEY = "billguard_db_v1";
 
 export const StorageService = {
   /**
@@ -11,8 +11,8 @@ export const StorageService = {
       const current = StorageService.getBills();
       const updated = [bill, ...current];
       localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
-    } catch (e) {
-      console.error("Failed to save bill to DB", e);
+    } catch {
+      // Ignore storage errors
     }
   },
 
@@ -23,8 +23,7 @@ export const StorageService = {
     try {
       const data = localStorage.getItem(STORAGE_KEY);
       return data ? JSON.parse(data) : [];
-    } catch (e) {
-      console.error("Failed to read DB", e);
+    } catch {
       return [];
     }
   },
@@ -35,10 +34,10 @@ export const StorageService = {
   deleteBill: (id: string): void => {
     try {
       const current = StorageService.getBills();
-      const updated = current.filter(b => b.id !== id);
+      const updated = current.filter((b) => b.id !== id);
       localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
-    } catch (e) {
-      console.error("Failed to delete bill", e);
+    } catch {
+      // Ignore storage errors
     }
   },
 
@@ -47,5 +46,5 @@ export const StorageService = {
    */
   clearDB: (): void => {
     localStorage.removeItem(STORAGE_KEY);
-  }
+  },
 };

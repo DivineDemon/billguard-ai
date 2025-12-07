@@ -1,13 +1,13 @@
 export enum BillStatus {
-  ANALYZING = 'Analyzing',
-  ACTION_REQUIRED = 'Action Required',
-  RESOLVED = 'Resolved',
-  UNDER_REVIEW = 'Under Review',
-  CLEAN = 'Clean'
+  ANALYZING = "Analyzing",
+  ACTION_REQUIRED = "Action Required",
+  RESOLVED = "Resolved",
+  UNDER_REVIEW = "Under Review",
+  CLEAN = "Clean",
 }
 
-export type IssueCategory = 'Duplicate' | 'Upcoding' | 'Unbundling' | 'Inflation' | 'Insurance Error' | 'Other';
-export type IssueSeverity = 'High' | 'Medium' | 'Low';
+export type IssueCategory = "Duplicate" | "Upcoding" | "Unbundling" | "Inflation" | "Insurance Error" | "Other";
+export type IssueSeverity = "High" | "Medium" | "Low";
 
 export interface BillIssue {
   title: string;
@@ -29,7 +29,7 @@ export interface InsuranceDetails {
   claimedAmount: number | null;
   coveredAmount: number | null;
   patientResponsibility: number | null;
-  status: 'Not Found' | 'Pending' | 'Applied' | 'Rejected' | 'Not Covered';
+  status: "Not Found" | "Pending" | "Applied" | "Rejected" | "Not Covered";
 }
 
 export interface AnalysisResult {
